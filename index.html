@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+	<title>Foodie</title>
+	<style>
+		.text-font {
+			font-family: 'Rubik Mono One', sans-serif;
+		}
+	</style>
+</head>
+<body class="bg-orange-50">
+
+<div class="container mx-auto h-screen flex flex-col items-center justify-center">
+	<p class="text-2xl my-3 bg-yellow-100 p-3 rounded font-semibold">Today is <span class="date"></span></p>
+	<img src="images/eating.svg" width="200" height="100">
+	<h1 class="text-2xl text-font my-8 text-center p-2 rounded">What am I eating today?</h1>
+	<button class="bg-red-500 text-white p-3 rounded hover:bg-red-800" onclick="getFood()">Tell me what to eat</button>
+	<div class="bg-white rounded p-3 m-8 px-10 animate-bounce" id="display-meal">
+		<h2>You should try:</h2>
+		<p><strong><span class="food-name"></span></strong></p>
+	</div>
+	<a href="" class="m-8 p-4 font-bold">Order online <span class="bg-green-700 text-white font-bold p-1 rounded text-sm">Coming soon!</span></a>
+</div>
+
+<script>
+	const d = new Date();
+	const time = d.getHours();
+	const displayMeal = document.querySelector("#display-meal");
+	const foodName = document.querySelector(".food-name");
+
+	let foods = ["Jollof", "Egusi Soup with semo", "Egusi and Eba", "Fried rice", "Beans and yam", "Beans and bread", "White rice and stew", "Spaghetti jollof", "White Spaghetti", "Potato porridge", "Yam and egg", "Yam and stew"];
+
+	let food = foods[Math.floor(Math.random() * foods.length)];
+
+	document.querySelector(".date").innerHTML = d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear();
+	displayMeal.style.display = "none";
+
+	foodName.innerHTML = food;
+
+	function getFood() {
+		displayMeal.style.display = "block";
+	}
+
+</script>
+</body>
+</html>
